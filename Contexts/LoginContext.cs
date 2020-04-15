@@ -5,7 +5,7 @@ namespace ProjetoEngSoftware.Contexts
 {
     public class LoginContext:DbContext
     {
-        public DbSet<Login> Laudos { get; set; }
+        public DbSet<Login> Logins { get; set; }
         public LoginContext(DbContextOptions<LoginContext> options) :base(options)
         {
             

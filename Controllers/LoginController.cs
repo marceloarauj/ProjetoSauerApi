@@ -13,11 +13,14 @@ namespace ProjetoEngSoftware.Controllers
         public LoginController(LoginService loginService){
             this.loginService = loginService;
         }
+        [HttpPost]
         public ActionResult<Perfil> efetuarLogin([FromBody] LoginDTO login){
+            var retorno = loginService.efetuarLogin(login);
 
-            bool resultado = loginService.efetuarLogin(login);
+            if(retorno == null)      
+                return BadRequest("Login ou senha incorretos");
 
-            return Ok();
+            return Ok(retorno);
         }
     }
 }

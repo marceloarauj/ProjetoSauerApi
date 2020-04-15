@@ -1,13 +1,20 @@
 using ProjetoEngSoftware.DTO;
+using ProjetoEngSoftware.Models;
+using ProjetoEngSoftware.Repositories;
 
 namespace ProjetoEngSoftware.Services
 {
     public class LoginService
     {
         
-        public bool efetuarLogin(LoginDTO login){
+        private LoginRepository loginRepository;
+        public LoginService(LoginRepository loginRepository){
+            this.loginRepository = loginRepository;
+        }
+        public Perfil efetuarLogin(LoginDTO login){
             
-            return true;
+            Perfil user = loginRepository.efetuarLogin(login);
+            return user;
         }
     }
 }
