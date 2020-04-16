@@ -14,7 +14,7 @@ namespace ProjetoEngSoftware.Configurations
             var TokenKey = "fedaf7d8863b48e197b9287d492b708e";
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(TokenKey);
-
+    
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
