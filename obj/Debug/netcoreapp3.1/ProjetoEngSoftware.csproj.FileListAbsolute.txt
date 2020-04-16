@@ -42,3 +42,11 @@ C:\Users\marcelo.araujo\Documents\Projetos\ProjetoEngSoftware\bin\Debug\netcorea
 C:\Users\marcelo.araujo\Documents\Projetos\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 C:\Users\marcelo.araujo\Documents\Projetos\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\Npgsql.dll
 C:\Users\marcelo.araujo\Documents\Projetos\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\marcelo.araujo\Documents\Projetos\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\marcelo.araujo\Documents\Projetos\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\marcelo.araujo\Documents\Projetos\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\marcelo.araujo\Documents\Projetos\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\marcelo.araujo\Documents\Projetos\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\marcelo.araujo\Documents\Projetos\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\marcelo.araujo\Documents\Projetos\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\marcelo.araujo\Documents\Projetos\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll

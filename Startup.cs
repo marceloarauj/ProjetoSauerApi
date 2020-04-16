@@ -13,6 +13,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ProjetoEngSoftware.Configurations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace ProjetoEngSoftware
 {
@@ -33,6 +36,26 @@ namespace ProjetoEngSoftware
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hospital Universitario", Version = "v1" });
             });
             
+            var TokenKey = "fedaf7d8863b48e197b9287d492b708e";
+            var key = Encoding.ASCII.GetBytes(TokenKey);
+            
+            services.AddAuthentication(x =>
+            {	
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
+
             DependencyInjectConfiguration.Registrar(services,Configuration);
             services.AddControllers();
         }
@@ -58,9 +81,9 @@ namespace ProjetoEngSoftware
                             .DisallowCredentials());
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

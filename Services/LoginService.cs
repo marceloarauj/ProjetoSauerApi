@@ -11,9 +11,9 @@ namespace ProjetoEngSoftware.Services
         public LoginService(LoginRepository loginRepository){
             this.loginRepository = loginRepository;
         }
-        public Perfil efetuarLogin(LoginDTO login){
+        public PerfilDTO efetuarLogin(LoginDTO login){
             
-            Perfil user = loginRepository.efetuarLogin(login);
+            PerfilDTO user = loginRepository.efetuarLogin(login);
             return user;
         }
     }

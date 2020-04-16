@@ -12,31 +12,34 @@ namespace ProjetoEngSoftware.Configurations
         public static void Registrar(IServiceCollection services, IConfiguration configuration){
             
             #region Services
-            services.AddSingleton<CadastroService>();
-            services.AddSingleton<ExameService>();
-            services.AddSingleton<LaudoService>();
+            services.AddTransient<CadastroService>();
+            services.AddTransient<ExameService>();
+            services.AddTransient<LaudoService>();
             services.AddTransient<LoginService>();
-            services.AddSingleton<MedicoResidenteService>();
-            services.AddSingleton<MedicoService>();
-            services.AddSingleton<ProfessorService>();
+            services.AddTransient<MedicoResidenteService>();
+            services.AddTransient<MedicoService>();
+            services.AddTransient<ProfessorService>();
             #endregion
 
             #region Repositories
-            services.AddSingleton<CadastroRepository>();
-            services.AddSingleton<ExameRepository>();
-            services.AddSingleton<LaudoRepository>();
+            services.AddTransient<CadastroRepository>();
+            services.AddTransient<ExameRepository>();
+            services.AddTransient<LaudoRepository>();
             services.AddTransient<LoginRepository>();
-            services.AddSingleton<MedicoResidenteRepository>();
-            services.AddSingleton<PerfilRepository>();
-            services.AddSingleton<ProfessorRepository>();
+            services.AddTransient<MedicoResidenteRepository>();
+            services.AddTransient<PerfilRepository>();
+            services.AddTransient<ProfessorRepository>();
             #endregion
-            
+
             #region DBContexts
             services.AddEntityFrameworkNpgsql().AddDbContext<LaudoContext>
                 (options =>options.UseNpgsql(configuration.GetConnectionString("SauerBD")));
             
             services.AddEntityFrameworkNpgsql().AddDbContext<LoginContext>
-                (options =>options.UseNpgsql(configuration.GetConnectionString("SauerBD")));            
+                (options =>options.UseNpgsql(configuration.GetConnectionString("SauerBD")));
+
+            services.AddEntityFrameworkNpgsql().AddDbContext<CadastroContext>
+                (options =>options.UseNpgsql(configuration.GetConnectionString("SauerBD")));              
             #endregion
         }
     }

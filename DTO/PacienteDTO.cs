@@ -1,6 +1,6 @@
 namespace ProjetoEngSoftware.DTO
 {
-    public class ClienteDTO
+    public class PacienteDTO
     {
         
     }

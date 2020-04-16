@@ -1,4 +1,6 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
+using ProjetoEngSoftware.Configurations;
 using ProjetoEngSoftware.DTO;
 using ProjetoEngSoftware.Models;
 using ProjetoEngSoftware.Services;
@@ -14,13 +16,17 @@ namespace ProjetoEngSoftware.Controllers
             this.loginService = loginService;
         }
         [HttpPost]
-        public ActionResult<Perfil> efetuarLogin([FromBody] LoginDTO login){
-            var retorno = loginService.efetuarLogin(login);
+        public ActionResult efetuarLogin([FromBody] LoginDTO login){
+            
+            login.Password = EncryptConfiguration.EncryptPassword(login.Password);
+            PerfilDTO perfil = loginService.efetuarLogin(login);
 
-            if(retorno == null)      
+            if(perfil == null)      
                 return BadRequest("Login ou senha incorretos");
 
-            return Ok(retorno);
+            string token = TokenConfiguration.GerarToken(perfil);
+
+            return Ok(new {data = perfil, accessToken = token});
         }
     }
 }
