@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marcelo.araujo\\Documents\\Projetos\\ProjetoEngSoftware\\ProjetoEngSoftware.csproj": {}
+    "C:\\Users\\marcelo.araujo\\Documents\\Projetos\\ProjetoSauerApi\\ProjetoEngSoftware\\ProjetoEngSoftware.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marcelo.araujo\\Documents\\Projetos\\ProjetoEngSoftware\\ProjetoEngSoftware.csproj": {
+    "C:\\Users\\marcelo.araujo\\Documents\\Projetos\\ProjetoSauerApi\\ProjetoEngSoftware\\ProjetoEngSoftware.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marcelo.araujo\\Documents\\Projetos\\ProjetoEngSoftware\\ProjetoEngSoftware.csproj",
+        "projectUniqueName": "C:\\Users\\marcelo.araujo\\Documents\\Projetos\\ProjetoSauerApi\\ProjetoEngSoftware\\ProjetoEngSoftware.csproj",
         "projectName": "ProjetoEngSoftware",
-        "projectPath": "C:\\Users\\marcelo.araujo\\Documents\\Projetos\\ProjetoEngSoftware\\ProjetoEngSoftware.csproj",
+        "projectPath": "C:\\Users\\marcelo.araujo\\Documents\\Projetos\\ProjetoSauerApi\\ProjetoEngSoftware\\ProjetoEngSoftware.csproj",
         "packagesPath": "C:\\Users\\marcelo.araujo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marcelo.araujo\\Documents\\Projetos\\ProjetoEngSoftware\\obj\\",
+        "outputPath": "C:\\Users\\marcelo.araujo\\Documents\\Projetos\\ProjetoSauerApi\\ProjetoEngSoftware\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -48,6 +48,12 @@
               "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.3, )"
             },

@@ -4,7 +4,8 @@ namespace ProjetoEngSoftware.DTO
     {
         public string Login {get;set;}
         public string Password {get;set;}
-        //public string Nome {get;set;}
-
+        
+        public string Email {get;set;}
+        public MedicoDTO Medico{get;set;}
     }
 }

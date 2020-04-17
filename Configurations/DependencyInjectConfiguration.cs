@@ -31,16 +31,8 @@ namespace ProjetoEngSoftware.Configurations
             services.AddTransient<ProfessorRepository>();
             #endregion
 
-            #region DBContexts
-            services.AddEntityFrameworkNpgsql().AddDbContext<LaudoContext>
-                (options =>options.UseNpgsql(configuration.GetConnectionString("SauerBD")));
-            
-            services.AddEntityFrameworkNpgsql().AddDbContext<LoginContext>
-                (options =>options.UseNpgsql(configuration.GetConnectionString("SauerBD")));
-
-            services.AddEntityFrameworkNpgsql().AddDbContext<CadastroContext>
-                (options =>options.UseNpgsql(configuration.GetConnectionString("SauerBD")));              
-            #endregion
+            services.AddEntityFrameworkNpgsql().AddDbContext<Context>
+                (options =>options.UseNpgsql(configuration.GetConnectionString("SauerBD")));                 
         }
     }
 }

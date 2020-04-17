@@ -18,7 +18,6 @@ namespace ProjetoEngSoftware.Controllers
         [HttpPost]
         public ActionResult efetuarLogin([FromBody] LoginDTO login){
             
-            login.Password = EncryptConfiguration.EncryptPassword(login.Password);
             PerfilDTO perfil = loginService.efetuarLogin(login);
 
             if(perfil == null)      

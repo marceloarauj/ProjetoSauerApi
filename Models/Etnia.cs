@@ -2,10 +2,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoEngSoftware.Models
 {
-    public class Login
+    public class Etnia
     {
         public int Id {get;set;}
-        public string UserLogin {get;set;}   
-        public string Password {get;set;}
+        public string Descricao {get;set;}
     }
 }

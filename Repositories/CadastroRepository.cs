@@ -8,10 +8,10 @@ namespace ProjetoEngSoftware.Repositories
 {
     public class CadastroRepository
     {
-        public CadastroRepository(CadastroContext cadastroContext){
+        public CadastroRepository(Context cadastroContext){
             this.cadastroContext = cadastroContext;
         }
-        private CadastroContext cadastroContext;
+        private Context cadastroContext;
 
         public PerfilDTO efetuarCadastro(DadosCadastroDTO dados){
             Cadastro cadastro = this.cadastroContext.Cadastros
