@@ -9,13 +9,9 @@ namespace ProjetoEngSoftware.Models
     {
 
         public int Id {get;set;}
-
         public string Nome {get;set;}
-
         public char Sexo {get;set;}
-
-        public int etnia {get;set;}
-
+        public Etnia Etnia {get;set;}
         public DateTime DataNascimento{get;set;}
     }
 }

@@ -8,7 +8,7 @@ namespace ProjetoEngSoftware.Entity
     {
         public void Configure(EntityTypeBuilder<Etnia> builder)
         {
-            builder.ToTable("tb_login");
+            builder.ToTable("tb_etnia");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("id_etnia").ValueGeneratedOnAdd();
             builder.Property(x => x.Descricao).HasColumnName("ds_etnia");

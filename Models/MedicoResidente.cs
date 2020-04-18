@@ -4,7 +4,7 @@ namespace ProjetoEngSoftware.Models
 {
     public class MedicoResidente
     {
-        public int Id;
-        public DateTime DataResidencia;
+        public int Id {get;set;}
+        public DateTime DataResidencia{get;set;}
     }
 }

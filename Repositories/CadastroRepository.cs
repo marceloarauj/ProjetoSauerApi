@@ -14,20 +14,20 @@ namespace ProjetoEngSoftware.Repositories
         private Context cadastroContext;
 
         public PerfilDTO efetuarCadastro(DadosCadastroDTO dados){
-            Cadastro cadastro = this.cadastroContext.Cadastros
-                                    .Where(user => user.login == dados.Login).FirstOrDefault();
+            Login cadastro = this.cadastroContext.Logins
+                                    .Where(user => user.UserLogin == dados.Login).FirstOrDefault();
             
             if(cadastro != null)
                 return null;
             
-            Cadastro novoUsuario = new Cadastro();
-            novoUsuario.login = dados.Login;
-            novoUsuario.password = dados.Password;
+            Login novoUsuario = new Login();
+            novoUsuario.UserLogin = dados.Login;
+            novoUsuario.Password = dados.Password;
 
-            cadastroContext.Cadastros.Add(novoUsuario);
+            cadastroContext.Logins.Add(novoUsuario);
             cadastroContext.SaveChanges();
 
-            return new PerfilDTO{Login = novoUsuario.login};
+            return new PerfilDTO{Login = novoUsuario.UserLogin};
         }
     }
 }

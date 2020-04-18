@@ -2,7 +2,7 @@ namespace ProjetoEngSoftware.Models
 {
     public class MedicoProfessor
     {
-        public int Id;
-        public string DescricaoTitulacao;
+        public int Id {get;set;}
+        public string DescricaoTitulacao {get;set;}
     }
 }
