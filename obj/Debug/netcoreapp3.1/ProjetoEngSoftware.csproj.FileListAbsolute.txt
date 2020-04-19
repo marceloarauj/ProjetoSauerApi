@@ -103,3 +103,4 @@ C:\Users\marcelo.araujo\Documents\Projetos\ProjetoSauerApi\ProjetoEngSoftware\ob
 C:\Users\marcelo.araujo\Documents\Projetos\ProjetoSauerApi\ProjetoEngSoftware\obj\Debug\netcoreapp3.1\ProjetoEngSoftware.pdb
 C:\Users\marcelo.araujo\Documents\Projetos\ProjetoSauerApi\ProjetoEngSoftware\obj\Debug\netcoreapp3.1\ProjetoEngSoftware.genruntimeconfig.cache
 C:\Users\marcelo.araujo\Documents\Projetos\ProjetoSauerApi\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\marcelo.araujo\Documents\Projetos\ProjetoSauerApi\ProjetoEngSoftware\bin\Debug\netcoreapp3.1\web.config

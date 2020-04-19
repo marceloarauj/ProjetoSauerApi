@@ -1,5 +1,6 @@
 namespace ProjetoEngSoftware.DTO
 {
+  
     public class MedicoDTO
     {
         public string Nome {get;set;}

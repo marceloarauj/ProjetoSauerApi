@@ -10,7 +10,7 @@ namespace ProjetoEngSoftware.Entity
         {
             builder.ToTable("tb_login");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).HasColumnName("id_login").ValueGeneratedOnAdd();
+            builder.HasOne(x => x.Medico).WithOne(y => y.Login).HasForeignKey<Login>(e => e.Id);
             builder.Property(x => x.UserLogin).HasColumnName("login");
             builder.Property(x => x.Password).HasColumnName("password");
         }

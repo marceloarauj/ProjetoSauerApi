@@ -11,8 +11,17 @@ namespace ProjetoEngSoftware.Services
         }
         private CadastroRepository cadastroRepository;
         public PerfilDTO efetuarCadastro(DadosCadastroDTO dados){
+            
+            switch(dados.Medico.Tipo){
 
-            return cadastroRepository.efetuarCadastro(dados);
+                case 0:return cadastroRepository.efetuarCadastroMedico(dados);
+
+                case 1:return cadastroRepository.efetuarCadastroResidente(dados);             
+
+                case 2:return cadastroRepository.efetuarCadastroProfessor(dados);
+            }
+            
+            return null;
         }
     }
 }

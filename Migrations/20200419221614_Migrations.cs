@@ -9,19 +9,6 @@ namespace ProjetoEngSoftware.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "tb_docente",
-                columns: table => new
-                {
-                    id_docente = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ds_titulacao = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_tb_docente", x => x.id_docente);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "tb_etnia",
                 columns: table => new
                 {
@@ -48,30 +35,18 @@ namespace ProjetoEngSoftware.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "tb_login",
+                name: "tb_medico",
                 columns: table => new
                 {
-                    id_login = table.Column<int>(nullable: false)
+                    id_medico = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    login = table.Column<string>(nullable: true),
-                    password = table.Column<string>(nullable: true)
+                    nm_medico = table.Column<string>(nullable: true),
+                    crm = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tb_login", x => x.id_login);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "tb_residente",
-                columns: table => new
-                {
-                    id_residente = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    dt_residencia = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_tb_residente", x => x.id_residente);
+                    table.PrimaryKey("PK_tb_medico", x => x.id_medico);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,66 +72,58 @@ namespace ProjetoEngSoftware.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "tb_laudo",
+                name: "tb_docente",
                 columns: table => new
                 {
-                    id_laudo = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ExameId = table.Column<int>(nullable: true),
-                    MedicoLaudoId = table.Column<int>(nullable: true),
-                    DescricaoLaudo = table.Column<string>(nullable: true),
-                    status = table.Column<bool>(nullable: false)
+                    id_docente = table.Column<int>(nullable: false),
+                    ds_titulacao = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tb_laudo", x => x.id_laudo);
+                    table.PrimaryKey("PK_tb_docente", x => x.id_docente);
                     table.ForeignKey(
-                        name: "FK_tb_laudo_tb_exame_ExameId",
-                        column: x => x.ExameId,
-                        principalTable: "tb_exame",
-                        principalColumn: "id_exame",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_tb_laudo_tb_residente_MedicoLaudoId",
-                        column: x => x.MedicoLaudoId,
-                        principalTable: "tb_residente",
-                        principalColumn: "id_residente",
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_tb_docente_tb_medico_id_docente",
+                        column: x => x.id_docente,
+                        principalTable: "tb_medico",
+                        principalColumn: "id_medico",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "tb_medico",
+                name: "tb_login",
                 columns: table => new
                 {
-                    id_medico = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Nome = table.Column<string>(nullable: true),
-                    Crm = table.Column<string>(nullable: true),
-                    ResidenteId = table.Column<int>(nullable: true),
-                    ProfessorId = table.Column<int>(nullable: true),
-                    LoginId = table.Column<int>(nullable: true)
+                    Id = table.Column<int>(nullable: false),
+                    login = table.Column<string>(nullable: true),
+                    password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tb_medico", x => x.id_medico);
+                    table.PrimaryKey("PK_tb_login", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_tb_medico_tb_login_LoginId",
-                        column: x => x.LoginId,
-                        principalTable: "tb_login",
-                        principalColumn: "id_login",
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_tb_login_tb_medico_Id",
+                        column: x => x.Id,
+                        principalTable: "tb_medico",
+                        principalColumn: "id_medico",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tb_residente",
+                columns: table => new
+                {
+                    id_residente = table.Column<int>(nullable: false),
+                    dt_residencia = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tb_residente", x => x.id_residente);
                     table.ForeignKey(
-                        name: "FK_tb_medico_tb_docente_ProfessorId",
-                        column: x => x.ProfessorId,
-                        principalTable: "tb_docente",
-                        principalColumn: "id_docente",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_tb_medico_tb_residente_ResidenteId",
-                        column: x => x.ResidenteId,
-                        principalTable: "tb_residente",
-                        principalColumn: "id_residente",
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_tb_residente_tb_medico_id_residente",
+                        column: x => x.id_residente,
+                        principalTable: "tb_medico",
+                        principalColumn: "id_medico",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -195,6 +162,34 @@ namespace ProjetoEngSoftware.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "tb_laudo",
+                columns: table => new
+                {
+                    id_laudo = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ExameId = table.Column<int>(nullable: true),
+                    MedicoLaudoId = table.Column<int>(nullable: true),
+                    DescricaoLaudo = table.Column<string>(nullable: true),
+                    status = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tb_laudo", x => x.id_laudo);
+                    table.ForeignKey(
+                        name: "FK_tb_laudo_tb_exame_ExameId",
+                        column: x => x.ExameId,
+                        principalTable: "tb_exame",
+                        principalColumn: "id_exame",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_tb_laudo_tb_residente_MedicoLaudoId",
+                        column: x => x.MedicoLaudoId,
+                        principalTable: "tb_residente",
+                        principalColumn: "id_residente",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_tb_laudo_ExameId",
                 table: "tb_laudo",
@@ -204,21 +199,6 @@ namespace ProjetoEngSoftware.Migrations
                 name: "IX_tb_laudo_MedicoLaudoId",
                 table: "tb_laudo",
                 column: "MedicoLaudoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_tb_medico_LoginId",
-                table: "tb_medico",
-                column: "LoginId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_tb_medico_ProfessorId",
-                table: "tb_medico",
-                column: "ProfessorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_tb_medico_ResidenteId",
-                table: "tb_medico",
-                column: "ResidenteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tb_paciente_EtniaId",
@@ -244,28 +224,28 @@ namespace ProjetoEngSoftware.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "tb_docente");
+
+            migrationBuilder.DropTable(
                 name: "tb_laudo");
-
-            migrationBuilder.DropTable(
-                name: "tb_pedido_exame");
-
-            migrationBuilder.DropTable(
-                name: "tb_exame");
-
-            migrationBuilder.DropTable(
-                name: "tb_medico");
-
-            migrationBuilder.DropTable(
-                name: "tb_paciente");
 
             migrationBuilder.DropTable(
                 name: "tb_login");
 
             migrationBuilder.DropTable(
-                name: "tb_docente");
+                name: "tb_pedido_exame");
 
             migrationBuilder.DropTable(
                 name: "tb_residente");
+
+            migrationBuilder.DropTable(
+                name: "tb_exame");
+
+            migrationBuilder.DropTable(
+                name: "tb_paciente");
+
+            migrationBuilder.DropTable(
+                name: "tb_medico");
 
             migrationBuilder.DropTable(
                 name: "tb_etnia");

@@ -10,7 +10,7 @@ using ProjetoEngSoftware.Contexts;
 namespace ProjetoEngSoftware.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20200418044511_Migrations")]
+    [Migration("20200419221614_Migrations")]
     partial class Migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,10 +88,7 @@ namespace ProjetoEngSoftware.Migrations
             modelBuilder.Entity("ProjetoEngSoftware.Models.Login", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("id_login")
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("integer");
 
                     b.Property<string>("Password")
                         .HasColumnName("password")
@@ -115,27 +112,18 @@ namespace ProjetoEngSoftware.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Crm")
+                        .HasColumnName("crm")
                         .HasColumnType("text");
 
-                    b.Property<int?>("LoginId")
-                        .HasColumnType("integer");
+                    b.Property<string>("Email")
+                        .HasColumnName("email")
+                        .HasColumnType("text");
 
                     b.Property<string>("Nome")
+                        .HasColumnName("nm_medico")
                         .HasColumnType("text");
 
-                    b.Property<int?>("ProfessorId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("ResidenteId")
-                        .HasColumnType("integer");
-
                     b.HasKey("IdMedico");
-
-                    b.HasIndex("LoginId");
-
-                    b.HasIndex("ProfessorId");
-
-                    b.HasIndex("ResidenteId");
 
                     b.ToTable("tb_medico");
                 });
@@ -143,10 +131,8 @@ namespace ProjetoEngSoftware.Migrations
             modelBuilder.Entity("ProjetoEngSoftware.Models.MedicoProfessor", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnName("id_docente")
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("integer");
 
                     b.Property<string>("DescricaoTitulacao")
                         .HasColumnName("ds_titulacao")
@@ -160,10 +146,8 @@ namespace ProjetoEngSoftware.Migrations
             modelBuilder.Entity("ProjetoEngSoftware.Models.MedicoResidente", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnName("id_residente")
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("DataResidencia")
                         .HasColumnName("dt_residencia")
@@ -254,19 +238,31 @@ namespace ProjetoEngSoftware.Migrations
                         .HasForeignKey("MedicoLaudoId");
                 });
 
-            modelBuilder.Entity("ProjetoEngSoftware.Models.Medico", b =>
+            modelBuilder.Entity("ProjetoEngSoftware.Models.Login", b =>
                 {
-                    b.HasOne("ProjetoEngSoftware.Models.Login", "Login")
-                        .WithMany()
-                        .HasForeignKey("LoginId");
+                    b.HasOne("ProjetoEngSoftware.Models.Medico", "Medico")
+                        .WithOne("Login")
+                        .HasForeignKey("ProjetoEngSoftware.Models.Login", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.HasOne("ProjetoEngSoftware.Models.MedicoProfessor", "Professor")
-                        .WithMany()
-                        .HasForeignKey("ProfessorId");
+            modelBuilder.Entity("ProjetoEngSoftware.Models.MedicoProfessor", b =>
+                {
+                    b.HasOne("ProjetoEngSoftware.Models.Medico", "Medico")
+                        .WithOne("Professor")
+                        .HasForeignKey("ProjetoEngSoftware.Models.MedicoProfessor", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.HasOne("ProjetoEngSoftware.Models.MedicoResidente", "Residente")
-                        .WithMany()
-                        .HasForeignKey("ResidenteId");
+            modelBuilder.Entity("ProjetoEngSoftware.Models.MedicoResidente", b =>
+                {
+                    b.HasOne("ProjetoEngSoftware.Models.Medico", "Medico")
+                        .WithOne("Residente")
+                        .HasForeignKey("ProjetoEngSoftware.Models.MedicoResidente", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ProjetoEngSoftware.Models.Paciente", b =>

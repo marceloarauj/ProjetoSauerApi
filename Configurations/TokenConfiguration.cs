@@ -19,8 +19,8 @@ namespace ProjetoEngSoftware.Configurations
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, "perfil.Nome"),
-                    new Claim(ClaimTypes.Role, "Atendente")
+                    new Claim(ClaimTypes.Name, perfil.Nome),
+                    new Claim(ClaimTypes.Role, perfil.UserRole)
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

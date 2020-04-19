@@ -10,6 +10,7 @@ namespace ProjetoEngSoftware.Entity
         {
             builder.ToTable("tb_pedido_exame");
             builder.HasKey(x => x.IdPedidoExame);
+            builder.Property(x => x.IdPedidoExame).ValueGeneratedOnAdd();
             builder.Property(x => x.DataExame).HasColumnName("dt_exame");
             builder.Property(x => x.HipoteseDiagnostica).HasColumnName("ds_hipotese_diagnostica");
             builder.Property(x => x.Recomendacoes).HasColumnName("ds_recomendacoes");

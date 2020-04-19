@@ -6,5 +6,6 @@ namespace ProjetoEngSoftware.Models
     {
         public int Id {get;set;}
         public DateTime DataResidencia{get;set;}
+        public Medico Medico {get;set;}
     }
 }

@@ -16,7 +16,6 @@ namespace ProjetoEngSoftware.Controllers
         }
         private CadastroService cadastroService;
 
-        [Authorize(Roles = "Atendente")]
         [HttpPost]
         public ActionResult efetuarCadastro(DadosCadastroDTO dados){
             dados.Password = EncryptConfiguration.EncryptPassword(dados.Password);

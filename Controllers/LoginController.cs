@@ -15,6 +15,7 @@ namespace ProjetoEngSoftware.Controllers
         public LoginController(LoginService loginService){
             this.loginService = loginService;
         }
+        
         [HttpPost]
         public ActionResult efetuarLogin([FromBody] LoginDTO login){
             
@@ -23,7 +24,7 @@ namespace ProjetoEngSoftware.Controllers
             if(perfil == null)      
                 return BadRequest("Login ou senha incorretos");
 
-            string token = TokenConfiguration.GerarToken(perfil);
+            string token = "Bearer "+ TokenConfiguration.GerarToken(perfil);
 
             return Ok(new {data = perfil, accessToken = token});
         }

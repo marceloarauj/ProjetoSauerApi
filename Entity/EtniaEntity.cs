@@ -10,7 +10,7 @@ namespace ProjetoEngSoftware.Entity
         {
             builder.ToTable("tb_etnia");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).HasColumnName("id_etnia").ValueGeneratedOnAdd();
+            builder.Property(x => x.Id).HasColumnName("id_etnia");
             builder.Property(x => x.Descricao).HasColumnName("ds_etnia");
 
         }
