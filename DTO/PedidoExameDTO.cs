@@ -1,6 +1,6 @@
 namespace ProjetoEngSoftware.DTO
 {
-    public class ExameDTO
+    public class PedidoExameDTO
     {
         
     }
